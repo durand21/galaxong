@@ -1,47 +1,44 @@
 #include "graphito.h"
 #include "galaxong.h"
+#include "nave.h"
 
 using namespace graphito;
 
 int main() {
     // Inicializa la ventana
-    VDefine(800, 600, "Juego de Nave");
-
-    // Crea una instancia de galaxong
-    galaxong nave(400, 300, 0, 400, 300, 100, CL_BLANCO);
-
-    // Bucle de eventos
+    VDefine(1000, 600, "Galaxong");
+    galaxong gx;
+    nave nave(400,250,0,CL_BLANCO);
+    int tecla = 0;
+    // Bucle de eventoss
     while (true) {
-        // Limpia la pantalla
-        VLimpia();
-
-        // Dibuja el campo
-        nave.nuevo_juego();
-
-        // Dibuja la nave
-        nave.dibujar_nave();
-
+        tecla = Tecla();
         // Manejo de entrada
-        if (Tecla() == VK_ESCAPE) {
+        if (tecla == VK_ESCAPE) {
             break; // Salir si se presiona Escape
         }
 
-        // Mover la nave con teclas (ejemplo: flechas)
-        if (Tecla() == TC_IZQUIERDA) {
+        // Mover la nave con teclas
+        if (tecla == TC_IZQUIERDA) {
             nave.mover(-5, 0); // Mueve a la izquierda
+            LimpiaMemoriaTecla();
         }
-        if (Tecla() == TC_DERECHA) {
+        if (tecla == TC_DERECHA) {
             nave.mover(5, 0); // Mueve a la derecha
+            LimpiaMemoriaTecla();
         }
-        if (Tecla() == TC_ARRIBA) {
+        if (tecla == TC_ARRIBA) {
             nave.mover(0, -5); // Mueve hacia arriba
+            LimpiaMemoriaTecla();
         }
-        if (Tecla() == TC_ABAJO) {
+        if (tecla == TC_ABAJO) {
             nave.mover(0, 5); // Mueve hacia abajo
+            LimpiaMemoriaTecla();
         }
-
         // Refresca la pantalla
         VRefresca();
+        Espera(50); // Controla la velocidad del bucle
+
     }
     return 0;
 }

@@ -42,6 +42,8 @@
 		<Unit filename="graphito.cpp" />
 		<Unit filename="graphito.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="nave.cpp" />
+		<Unit filename="nave.h" />
 		<Unit filename="utils.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

@@ -67,3 +67,39 @@
 1733103871 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\utils.h
 	<iostream>
 
+1733273986 source:c:\users\romme\onedrive\escritorio\galaxong\galaxong.cpp
+	"graphito.h"
+	"galaxong.h"
+	"nave.h"
+
+1733272085 c:\users\romme\onedrive\escritorio\galaxong\graphito.h
+	<iostream>
+	<vector>
+	<array>
+
+1733273967 c:\users\romme\onedrive\escritorio\galaxong\galaxong.h
+	"graphito.h"
+
+1733272085 source:c:\users\romme\onedrive\escritorio\galaxong\graphito.cpp
+	<fstream>
+	<sstream>
+	<queue>
+	<vector>
+	<math.h>
+	<process.h>
+	<windows.h>
+	<windowsx.h>
+	"graphito.h"
+
+1733274019 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
+	"graphito.h"
+	"galaxong.h"
+	"nave.h"
+
+1733273787 c:\users\romme\onedrive\escritorio\galaxong\nave.h
+	"graphito.h"
+
+1733273881 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
+	"graphito.h"
+	"nave.h"
+
