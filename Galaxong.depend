@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1732758718 source:c:\users\romme\documents\proyectos_c++\galaxong\graphito.cpp
+	<fstream>
+	<sstream>
+	<queue>
+	<vector>
+	<math.h>
+	<process.h>
+	<windows.h>
+	<windowsx.h>
+	"graphito.h"
+
+1713123738 c:\users\romme\documents\proyectos_c++\galaxong\graphito.h
+	<iostream>
+	<vector>
+	<array>
+
+1733099258 source:c:\users\romme\documents\proyectos_c++\galaxong\main.cpp
+	"graphito.h"
+	"galaxong.h"
+
+1733098981 c:\users\romme\documents\proyectos_c++\galaxong\galaxong.h
+	"graphito.h"
+
+1733099197 source:c:\users\romme\documents\proyectos_c++\galaxong\galaxong.cpp
+	"graphito.h"
+	"galaxong.h"
+
+1733111616 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\galaxong.cpp
+	"graphito.h"
+	"galaxong.h"
+
+1733107973 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\graphito.h
+	<iostream>
+	<vector>
+	<array>
+
+1733111456 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\galaxong.h
+	"graphito.h"
+
+1733103371 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\graphito.cpp
+	<fstream>
+	<sstream>
+	<queue>
+	<vector>
+	<math.h>
+	<process.h>
+	<windows.h>
+	<windowsx.h>
+	"graphito.h"
+
+1733111474 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\main.cpp
+	"graphito.h"
+	"galaxong.h"
+
+1733103371 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\graphito.cpp
+	<fstream>
+	<sstream>
+	<queue>
+	<vector>
+	<math.h>
+	<process.h>
+	<windows.h>
+	<windowsx.h>
+	"graphito.h"
+
+1733103871 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\semana 10\proyecto clase\galaxong\galaxong\utils.h
+	<iostream>
+
