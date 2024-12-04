@@ -6,7 +6,7 @@ using namespace graphito;
 
 int main() {
     // Inicializa la ventana
-    VDefine(1000, 600, "Galaxong");
+    VDefine(1000, 600, "Galaxong2");
     galaxong gx;
     nave nave(400,250,0,CL_BLANCO);
     int tecla = 0;
