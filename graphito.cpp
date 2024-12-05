@@ -293,7 +293,7 @@ static COLORREF _colores[] = {
    RGB(255, 0, 255),   // CL_MAGENTA
    RGB(0, 255, 255),   // CL_CYAN
    RGB(255, 255, 255), // CL_BLANCO
-   RGB(128, 128, 128), // CL_GRIS
+   RGB(180, 180, 180), // CL_GRIS
    RGB(119, 67, 66),   // CL_CAFE
    RGB(255, 127, 39),  // CL_NARANJA
    RGB(250, 128, 114), // CL_SALMON
@@ -307,6 +307,7 @@ static COLORREF _colores[] = {
    RGB(128, 128, 0),   // CL_OLIVO
    RGB(64, 224, 208),  // CL_TURQUESA
    RGB(192, 192, 192), // CL_PLATA
+
 
 };
 
