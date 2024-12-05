@@ -30,3 +30,8 @@ void galaxong::rotar(int deltaAngulo) {
     angulo += deltaAngulo;
 }
 
+
+void galaxong::actualizar_puntuacion(int puntos_obtenidos) {
+    puntos += puntos_obtenidos; // Incrementa la puntuación
+}
+

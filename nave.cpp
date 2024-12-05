@@ -1,4 +1,3 @@
-
 #include "graphito.h"
 #include "nave.h"
 using namespace graphito;
@@ -17,15 +16,15 @@ void nave::dibujar_nave() {
         int base = 10;
         int altura = 20;
 
-        // Coordenadas de los vertices del triangulo
+        // Coordenadas de los vértices del triángulo
         int x1 = x;
-        int y1 = y - altura / 2;
+        int y1 = y - altura / 2; // Vértice superior
         int x2 = x - base / 2;
-        int y2 = y + altura / 2;
+        int y2 = y + altura / 2; // Vértice inferior izquierdo
         int x3 = x + base / 2;
-        int y3 = y + altura / 2;
+        int y3 = y + altura / 2; // Vértice inferior derecho
 
-        // Dibuja el triangulo usando lineas
+        // Dibuja el triángulo usando líneas
         Linea(x1, y1, x2, y2);
         Linea(x2, y2, x3, y3);
         Linea(x3, y3, x1, y1);
