@@ -16,40 +16,25 @@ int main() {
     // Da tiempo a renderizar
     Espera(500);
     nave nave(400, 250, 0, CL_AZUL);
-    // Da tiempo a renderizar
-        Espera(90);
-    FormatoBorde(EB_CONTINUO, 5,CL_BLANCO);
-    // Configuración del texto
-    TFormato("Times New Roman", 32, 0, FT_NEGRITA, CL_NEGRO); // Fuente Time New Roman con tamaño 32
-    TMostrar(810, 80, 360, 50, "Puntos: 0");
-    // Da tiempo a renderizar
-        Espera(90);
-    TFormato("Times New Roman", 32, 0, FT_NEGRITA, CL_NEGRO); // Fuente Arial con tamaño 20
-    TMostrar(810, 140, 360, 50, "Disparos: 0");
-    // Da tiempo a renderizar
-        Espera(90);
-    TFormato("Times New Roman", 32, 0, FT_NEGRITA, CL_NEGRO); // Fuente Arial con tamaño 20
-    TMostrar(810, 200, 360, 50, "Enemigos: 0");
-    // Da tiempo a renderizar
-        Espera(90);
-        // Creamos nuevos botónes en la posición central entre "Pausar" y "Reiniciar Y salir"
-    FormatoRelleno(ER_SOLIDO, CL_NEGRO);
-    RectanguloRedondeado(985, 280, 780, 340, 10);
-    FormatoRelleno(ER_SOLIDO, CL_NEGRO);
-    RectanguloRedondeado(985, 405, 780, 350, 10);
-    FormatoRelleno(ER_SOLIDO, CL_NEGRO);
-    RectanguloRedondeado(985, 470, 780, 415, 10);  // Ajusta la altura y la posición del rectángulo azul
 
-    // Configura el texto para cada botón
-    TFormato("Times New Roman", 27, 0, FT_NEGRITA, CL_BLANCO);
-    TMostrar(850, 307, 125, 45, "Pausar");
-    TMostrar(840, 375, 120, 35, "Reiniciar");
-    TMostrar(860, 445, 120, 35, "Salir");
+    FormatoBorde(EB_CONTINUO, 5,CL_BLANCO);
+
 
     int tecla = 0;
+    int xMouse = 0, yMouse = 0;
+    bool clicIzq = false;
 
     // Bucle de eventos
     while (true) {
+             // Obtener la posición del mouse
+        Raton(xMouse, yMouse);  // Usamos la función Raton() de graphito para obtener las coordenadas del mouse
+
+        // Detectar si el botón izquierdo está presionado
+        clicIzq = RatonBotonIzq();  // Usamos la función RatonBotonIzq() para saber si el botón izquierdo está presionado
+
+        // Maneja los eventos de los botones con el mouse
+        gx.manejar_eventos(xMouse, yMouse, clicIzq);
+
         tecla = Tecla();
         // Manejo de entrada
         if (tecla == VK_ESCAPE) {
@@ -73,6 +58,10 @@ int main() {
             nave.mover(0, 5); // Mueve hacia abajo
             LimpiaMemoriaTecla();
         }
+
+        // Dibuja los botones, puntuación y actualiza la pantalla
+        gx.dibujar_botones();
+        gx.dibujar_puntuacion();
 
         // Refresca la pantalla
         VRefresca();

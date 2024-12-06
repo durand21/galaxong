@@ -175,3 +175,39 @@
 	"graphito.h"
 	"nave.h"
 
+1733457827 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\graphito.cpp
+	<fstream>
+	<sstream>
+	<queue>
+	<vector>
+	<math.h>
+	<process.h>
+	<windows.h>
+	<windowsx.h>
+	"graphito.h"
+
+1733457827 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\graphito.h
+	<iostream>
+	<vector>
+	<array>
+
+1733458705 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.cpp
+	"graphito.h"
+	"nave.h"
+
+1733457827 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.h
+	"graphito.h"
+
+1733459512 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\main.cpp
+	"graphito.h"
+	"galaxong.h"
+	"nave.h"
+
+1733459742 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.h
+	"graphito.h"
+
+1733459509 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.cpp
+	"graphito.h"
+	"galaxong.h"
+	"nave.h"
+
