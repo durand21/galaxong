@@ -18,6 +18,8 @@ galaxong::galaxong(int _x, int _y, int _angulo, int _x_campo, int _y_campo, int 
 }
 
 void galaxong::nuevo_juego() {
+    //Esperar asi mejora rendimiento
+        Espera(500);
     // Establece el color del borde del campo
     FormatoBorde(EB_CONTINUO, 5, borde_campo_cl);
     FormatoRelleno(ER_NORELLENO);
