@@ -33,21 +33,6 @@ void nave::dibujar_nave() {
                             {390, 351}, {385, 351}}
                         );
         FormatoRelleno(ER_SOLIDO,CL_ROJO);
-        /*int base = 10;
-        int altura = 20;
-
-        // Coordenadas de los vértices del triángulo
-        int x1 = x;
-        int y1 = y - altura / 2; // Vértice superior
-        int x2 = x - base / 2;
-        int y2 = y + altura / 2; // Vértice inferior izquierdo
-        int x3 = x + base / 2;
-        int y3 = y + altura / 2; // Vértice inferior derecho
-
-        // Dibuja el triángulo usando líneas
-        Linea(100, 200, x2, y2);
-       // Linea(x2, y2, x3, y3);
-       // Linea(x3, y3, x1, y1);*/
         visible = true;
     }
 }
