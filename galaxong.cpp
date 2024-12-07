@@ -60,38 +60,69 @@ void galaxong::dibujar_botones() {
     TMostrar(860, 445, 120, 35, botonSalir.texto);
 }
 void galaxong::pausar() {
-    pausado = !pausado;  // Alterna entre pausado y reanudado
+    if (pausado) {
+        // Si el juego ya está pausado, pregunta si desea reanudar
+        if (Pregunta("¿Quieres reanudar el juego?")) {
+            pausado = false;  // Reanuda el juego
+            Mensaje("Juego reanudado");
+        }
+    } else {
+        // Si el juego no está pausado, lo pausa
+        pausado = true;
+        Mensaje("Juego pausado");
+    }
 }
 
 void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
     // Detecta si el mouse está dentro de un botón y si se ha hecho clic
     if (clicIzq) {
-        // Pausar
+        // Pausar o Reanudar
         if (xMouse >= botonPausar.xIzq && xMouse <= botonPausar.xDer &&
             yMouse >= botonPausar.yArr && yMouse <= botonPausar.yAba) {
-            pausar();
+            pausar();  // Llama a la función pausar para alternar entre pausar y reanudar
         }
+
         // Reiniciar
         if (xMouse >= botonReiniciar.xIzq && xMouse <= botonReiniciar.xDer &&
             yMouse >= botonReiniciar.yArr && yMouse <= botonReiniciar.yAba) {
-            reiniciar();
+            if (Pregunta("¿Quieres reiniciar el juego?")) {
+                reiniciar();
+            }
         }
+
         // Salir
         if (xMouse >= botonSalir.xIzq && xMouse <= botonSalir.xDer &&
             yMouse >= botonSalir.yArr && yMouse <= botonSalir.yAba) {
-            VCierra();  // Cierra la ventana
+            if (Pregunta("¿Quieres salir del juego?")) {
+                VCierra();  // Cierra la ventana
+            }
         }
     }
 }
 
-void galaxong::reiniciar() {
-    x = 400;  // Posición inicial de la nave (en el centro del campo)
-    y = 250;
-    angulo = 0;  // Restablece el ángulo
-    puntos = 0;  // Reinicia los puntos
 
+void galaxong::reiniciar() {
+    x = 400;  // Coordenada inicial X de la nave (centro del círculo)
+    y = 250;  // Coordenada inicial Y de la nave (centro del círculo)
+    angulo = 0;  // Restablece el ángulo de la nave
+    puntos = 0;  // Reinicia los puntos del jugador
+    disparos = 0;  // Reinicia la cantidad de disparos
+    enemigos = 0;  // Reinicia la cantidad de enemigos
+
+    // También puedes detener cualquier movimiento en curso si es necesario
+    pausado = false;  // Asegura que el juego no quede pausado al reiniciar
+    Mensaje("El juego ha sido reiniciado");
 }
+
 
 bool galaxong::esta_pausado() const {
     return pausado;
+}
+
+void galaxong::actualizar() {
+    if (esta_pausado()) {
+        // Si el juego está pausado, no se actualiza nada
+        return;
+    }
+
 }

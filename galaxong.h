@@ -40,4 +40,5 @@ public:
     bool esta_pausado() const;                        // Verifica si el juego está pausado
     void pausar();                                    // Pausa el juego
     void reiniciar();                                 // Reinicia la nave
+    void actualizar();                                // actualiza los botones
 };
