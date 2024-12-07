@@ -23,6 +23,7 @@ int main() {
     int tecla = 0;
     int xMouse = 0, yMouse = 0;
     bool clicIzq = false;
+    bool clicIzquierdoProcesado = false; // Marca si el clic izquierdo ya fue procesado
 
     // Bucle de eventos
     while (true) {
@@ -30,12 +31,22 @@ int main() {
         Raton(xMouse, yMouse);  // Usamos la función Raton() de graphito para obtener las coordenadas del mouse
 
         // Detectar si el botón izquierdo está presionado
-        clicIzq = RatonBotonIzq();  // Usamos la función RatonBotonIzq() para saber si el botón izquierdo está presionado
+        clicIzq = RatonBotonIzq();
 
-        // Maneja los eventos de los botones con el mouse
-        gx.manejar_eventos(xMouse, yMouse, clicIzq);
+        // Procesar el clic izquierdo solo si no ha sido procesado aún
+        if (clicIzq && !clicIzquierdoProcesado) {
+            gx.manejar_eventos(xMouse, yMouse, clicIzq);
+            clicIzquierdoProcesado = true; // Marca el clic como procesado
+        } else if (!clicIzq) {
+            clicIzquierdoProcesado = false; // Restablece el estado si se suelta el botón
+        }
+
+        // Actualiza el estado del juego
+        gx.actualizar(); // Actualiza la lógica del juego
 
         tecla = Tecla();
+         // Mover la nave con teclas
+        if (!gx.esta_pausado()) { // Solo permite mover si el juego no está en pausa
         // Manejo de entrada
         if (tecla == VK_ESCAPE) {
             break; // Salir si se presiona Escape
@@ -58,7 +69,7 @@ int main() {
             nave.mover(0, 5); // Mueve hacia abajo
             LimpiaMemoriaTecla();
         }
-
+   }
         // Dibuja los botones, puntuación y actualiza la pantalla
         gx.dibujar_botones();
         gx.dibujar_puntuacion();
