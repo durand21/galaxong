@@ -60,24 +60,26 @@ void galaxong::dibujar_botones() {
     TMostrar(860, 445, 120, 35, botonSalir.texto);
 }
 void galaxong::pausar() {
-    pausado = !pausado;  // Alterna entre pausado y reanudado
     if (pausado) {
-        Mensaje("Juego pausado");
+        // Si el juego ya está pausado, pregunta si desea reanudar
+        if (Pregunta("¿Quieres reanudar el juego?")) {
+            pausado = false;  // Reanuda el juego
+            Mensaje("Juego reanudado");
+        }
     } else {
-        Mensaje("Juego reanudado");
+        // Si el juego no está pausado, lo pausa
+        pausado = true;
+        Mensaje("Juego pausado");
     }
 }
-
 
 void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
     // Detecta si el mouse está dentro de un botón y si se ha hecho clic
     if (clicIzq) {
-        // Pausar
+        // Pausar o Reanudar
         if (xMouse >= botonPausar.xIzq && xMouse <= botonPausar.xDer &&
             yMouse >= botonPausar.yArr && yMouse <= botonPausar.yAba) {
-            if (Pregunta("¿Quieres pausar el juego?")) {
-                pausar();
-            }
+            pausar();  // Llama a la función pausar para alternar entre pausar y reanudar
         }
 
         // Reiniciar
