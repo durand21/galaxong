@@ -1,10 +1,11 @@
 #include "graphito.h"
 #include "galaxong.h"
 #include "nave.h"
-
+#include "bicho.h"
 using namespace graphito;
 
 int main() {
+    int btn_dibujado = false;
     // Inicializa la ventana
     VDefine(1000, 560, "Galaxong");
     FormatoBorde(EB_CONTINUO, 0, CL_BLANCO);
@@ -15,25 +16,31 @@ int main() {
     galaxong gx;
     // Da tiempo a renderizar
     Espera(500);
-    nave nave(400, 250, 0, CL_AZUL);
-
+    nave nave(400, 250, 0, CL_ROJO, CL_AZUL);
+    bicho bicho(400,250,CL_ROJO,CL_CAFE, 10);
     FormatoBorde(EB_CONTINUO, 5,CL_BLANCO);
 
 
     int tecla = 0;
     int xMouse = 0, yMouse = 0;
     bool clicIzq = false;
-
+    bool clicIzquierdoProcesado = false; // Marca si el clic izquierdo ya fue procesado
     // Bucle de eventos
     while (true) {
-             // Obtener la posición del mouse
-        Raton(xMouse, yMouse);  // Usamos la función Raton() de graphito para obtener las coordenadas del mouse
 
+        // Obtener la posición del mouse
+        Raton(xMouse, yMouse);  // Usamos la función Raton() de graphito para obtener las coordenadas del mouse
         // Detectar si el botón izquierdo está presionado
         clicIzq = RatonBotonIzq();  // Usamos la función RatonBotonIzq() para saber si el botón izquierdo está presionado
-
-        // Maneja los eventos de los botones con el mouse
-        gx.manejar_eventos(xMouse, yMouse, clicIzq);
+        // Procesar el clic izquierdo solo si no ha sido procesado aún
+        if (clicIzq && !clicIzquierdoProcesado) {
+            gx.manejar_eventos(xMouse, yMouse, clicIzq);
+            clicIzquierdoProcesado = true; // Marca el clic como procesado
+        } else if (!clicIzq) {
+            clicIzquierdoProcesado = false; // Restablece el estado si se suelta el botón
+        }
+                // Actualiza el estado del juego
+        gx.actualizar(); // Actualiza la lógica del juego
 
         tecla = Tecla();
         // Manejo de entrada
@@ -43,29 +50,32 @@ int main() {
 
         // Mover la nave con teclas
         if (tecla == TC_IZQUIERDA) {
-            nave.mover(-5, 0); // Mueve a la izquierda
+            nave.mover(-10, 0); // Mueve a la izquierda
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_DERECHA) {
-            nave.mover(5, 0); // Mueve a la derecha
+            nave.mover(10, 0); // Mueve a la derecha
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_ARRIBA) {
-            nave.mover(0, -5); // Mueve hacia arriba
+            nave.mover(0, -10); // Mueve hacia arriba
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_ABAJO) {
-            nave.mover(0, 5); // Mueve hacia abajo
+            nave.mover(0, 10); // Mueve hacia abajo
             LimpiaMemoriaTecla();
         }
-
-        // Dibuja los botones, puntuación y actualiza la pantalla
-        gx.dibujar_botones();
         gx.dibujar_puntuacion();
+
+        if (btn_dibujado == false){ // Dibuja los botones, puntuación y actualiza la pantalla
+            gx.dibujar_botones();
+            btn_dibujado = true;
+            Espera(100);
+        }
 
         // Refresca la pantalla
         VRefresca();
-        Espera(50); // Controla la velocidad del bucle
+        Espera(10); // Controla la velocidad del bucle
 
     }
 

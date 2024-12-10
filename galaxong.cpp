@@ -18,6 +18,7 @@ void galaxong::nuevo_juego() {
     disparos = 0;
     enemigos = 0;
     pausado = false;
+    Mensaje("Bienvenidos al juego de galaxong");
     //Esperar asi mejora rendimiento
     Espera(500);
     // Establece el color del borde del campo
@@ -25,8 +26,6 @@ void galaxong::nuevo_juego() {
     FormatoRelleno(ER_NORELLENO);
     Circulo(x_campo, y_campo, radio_campo);
 }
-
-
 
 void galaxong::rotar(int deltaAngulo) {
     angulo += deltaAngulo;
@@ -59,8 +58,19 @@ void galaxong::dibujar_botones() {
     TMostrar(840, 375, 120, 35, botonReiniciar.texto);
     TMostrar(860, 445, 120, 35, botonSalir.texto);
 }
+
 void galaxong::pausar() {
-    pausado = !pausado;  // Alterna entre pausado y reanudado
+    if (pausado) {
+        // Si el juego ya está pausado, pregunta si desea reanudar
+        if (Pregunta("¿Quieres reanudar el juego?")) {
+            pausado = false;  // Reanuda el juego
+            Mensaje("Juego reanudado");
+        }
+    } else {
+        // Si el juego no está pausado, lo pausa
+        pausado = true;
+        Mensaje("Juego pausado");
+    }
 }
 
 void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
@@ -74,12 +84,16 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
         // Reiniciar
         if (xMouse >= botonReiniciar.xIzq && xMouse <= botonReiniciar.xDer &&
             yMouse >= botonReiniciar.yArr && yMouse <= botonReiniciar.yAba) {
-            reiniciar();
+            if (Pregunta("¿Quieres reiniciar el juego?")) {
+                reiniciar();
+            }
         }
         // Salir
         if (xMouse >= botonSalir.xIzq && xMouse <= botonSalir.xDer &&
             yMouse >= botonSalir.yArr && yMouse <= botonSalir.yAba) {
-            VCierra();  // Cierra la ventana
+            if (Pregunta("¿Quieres salir del juego?")) {
+                VCierra();  // Cierra la ventana
+            }
         }
     }
 }
@@ -94,4 +108,10 @@ void galaxong::reiniciar() {
 
 bool galaxong::esta_pausado() const {
     return pausado;
+}
+
+void galaxong::actualizar() {
+    if (esta_pausado()) {
+        return;
+    }
 }
