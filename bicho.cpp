@@ -24,7 +24,7 @@ void bicho::dibujar_bicho() {
         Circulo(x,y,ancho_bicho);
           Espera(30);
         //---------------- Patas
-        FormatoBorde(EB_CONTINUO, 1, color_patas);
+        FormatoBorde(EB_CONTINUO, 2, color_patas);
         FormatoRelleno(ER_SOLIDO, color_patas);
              //----//
         Linea(x_menos_radio,y_menos_radio,x_menos_radio-10,y_menos_radio-10);  // izquierda arriba
