@@ -9,7 +9,7 @@ nave::nave(int _x,int _y,int _angulo, int _color_alas,int _color){
     color_alas = _color_alas;
     visible = false;
 
-    coordenadas_alas_nave = {
+ /*   coordenadas_alas_nave = {
         {435, 406}, {415, 396}, {385, 396}, {365, 406}, {365, 436},
         {380, 426}, {393, 426}, {393, 431}, {407, 431}, {407, 426},
         {420, 426}, {435, 436}
@@ -22,9 +22,20 @@ nave::nave(int _x,int _y,int _angulo, int _color_alas,int _color){
         {380, 437}, {380, 407}, {390, 402}, {380, 402},
         {390, 387}, {385, 387}
     };
+*/
 
-
-
+    coordenadas_alas_nave ={
+        {418, 423}, {408, 418}, {392, 418}, {382, 423}, {382, 438},
+        {390, 433}, {396, 433}, {396, 435}, {403, 435}, {403, 433},
+        {410, 433}, {418, 438}
+    };
+    coordenadas_body_nave = {
+        {392, 411}, {395, 409}, {400, 409}, {405, 409},
+        {408, 411}, {408, 414}, {405, 414}, {410, 421},
+        {405, 421}, {410, 423}, {410, 439}, {400, 431},
+        {390, 439}, {390, 423}, {395, 421}, {390, 421},
+        {395, 414}, {392, 414}
+    };
     dibujar_nave();
 }
 
@@ -62,6 +73,27 @@ void nave::ocultar(){
 }
 
 void nave::mover(int _x, int _y) {
+
+        // Verificar que la nueva posición no se salga del círculo
+    for (auto& coordenada : coordenadas_alas_nave) {
+        int nueva_x = coordenada[0] + _x;
+        int nueva_y = coordenada[1] + _y;
+        // Comprobar si la coordenada está dentro del círculo
+        if ((nueva_x - 400) * (nueva_x - 400) + (nueva_y - 250) * (nueva_y - 250) > 200 * 200) {
+            return; // Si alguna coordenada está fuera, no hacer el movimiento
+        }
+    }
+
+    for (auto& coordenada : coordenadas_body_nave) {
+        int nueva_x = coordenada[0] + _x;
+        int nueva_y = coordenada[1] + _y;
+        // Comprobar si la coordenada está dentro del círculo
+        if ((nueva_x - 400) * (nueva_x - 400) + (nueva_y - 250) * (nueva_y - 250) > 200 * 200) {
+            return; // Si alguna coordenada está fuera, no hacer el movimiento
+        }
+    }
+
+
     ocultar();
     // Iteración para modificar cada coordenada de la ala de la nave
     for (auto& coordenada : coordenadas_alas_nave) { // Usa referencia para modificar el vector

@@ -166,13 +166,13 @@
 	<windowsx.h>
 	"graphito.h"
 
-1733794977 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
+1733805798 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
 	"graphito.h"
 	"galaxong.h"
 	"nave.h"
 	"bicho.h"
 
-1733716744 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
+1733806825 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
 	"graphito.h"
 	"nave.h"
 
@@ -212,7 +212,7 @@
 	"galaxong.h"
 	"nave.h"
 
-1733799921 source:c:\users\romme\onedrive\escritorio\galaxong\bicho.cpp
+1733802686 source:c:\users\romme\onedrive\escritorio\galaxong\bicho.cpp
 	"graphito.h"
 	"bicho.h"
 
