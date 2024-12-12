@@ -1,6 +1,7 @@
 #include "graphito.h"
 #include "galaxong.h"
 #include "nave.h"
+#include <cmath>
 using namespace graphito;
 
 galaxong::galaxong(int _x, int _y, int _angulo, int _x_campo, int _y_campo, int _radio_campo, int _borde_campo_cl)
@@ -18,12 +19,14 @@ void galaxong::nuevo_juego() {
     disparos = 0;
     enemigos = 0;
     pausado = false;
+      Mensaje("Bienvenidos al juego de galaxong");
     //Esperar asi mejora rendimiento
     Espera(500);
     // Establece el color del borde del campo
     FormatoBorde(EB_CONTINUO, 5, borde_campo_cl);
     FormatoRelleno(ER_NORELLENO);
     Circulo(x_campo, y_campo, radio_campo);
+
 }
 
 
@@ -34,7 +37,7 @@ void galaxong::rotar(int deltaAngulo) {
 
 
 void galaxong::actualizar_puntuacion(int puntos_obtenidos) {
-    puntos += puntos_obtenidos; // Incrementa la puntuación
+    puntos += puntos_obtenidos; // Incrementa la puntuaciÃ³n
 }
 
 void galaxong::dibujar_puntuacion() {
@@ -61,31 +64,31 @@ void galaxong::dibujar_botones() {
 }
 void galaxong::pausar() {
     if (pausado) {
-        // Si el juego ya está pausado, pregunta si desea reanudar
-        if (Pregunta("¿Quieres reanudar el juego?")) {
+        // Si el juego ya estÃ¡ pausado, pregunta si desea reanudar
+        if (Pregunta("Â¿Quieres reanudar el juego?")) {
             pausado = false;  // Reanuda el juego
             Mensaje("Juego reanudado");
         }
     } else {
-        // Si el juego no está pausado, lo pausa
+        // Si el juego no estÃ¡ pausado, lo pausa
         pausado = true;
         Mensaje("Juego pausado");
     }
 }
 
 void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
-    // Detecta si el mouse está dentro de un botón y si se ha hecho clic
+    // Detecta si el mouse estÃ¡ dentro de un botÃ³n y si se ha hecho clic
     if (clicIzq) {
         // Pausar o Reanudar
         if (xMouse >= botonPausar.xIzq && xMouse <= botonPausar.xDer &&
             yMouse >= botonPausar.yArr && yMouse <= botonPausar.yAba) {
-            pausar();  // Llama a la función pausar para alternar entre pausar y reanudar
+            pausar();  // Llama a la funciÃ³n pausar para alternar entre pausar y reanudar
         }
 
         // Reiniciar
         if (xMouse >= botonReiniciar.xIzq && xMouse <= botonReiniciar.xDer &&
             yMouse >= botonReiniciar.yArr && yMouse <= botonReiniciar.yAba) {
-            if (Pregunta("¿Quieres reiniciar el juego?")) {
+            if (Pregunta("Â¿Quieres reiniciar el juego?")) {
                 reiniciar();
             }
         }
@@ -93,7 +96,7 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
         // Salir
         if (xMouse >= botonSalir.xIzq && xMouse <= botonSalir.xDer &&
             yMouse >= botonSalir.yArr && yMouse <= botonSalir.yAba) {
-            if (Pregunta("¿Quieres salir del juego?")) {
+            if (Pregunta("Â¿Quieres salir del juego?")) {
                 VCierra();  // Cierra la ventana
             }
         }
@@ -102,15 +105,34 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
 
 
 void galaxong::reiniciar() {
-    x = 400;  // Coordenada inicial X de la nave (centro del círculo)
-    y = 250;  // Coordenada inicial Y de la nave (centro del círculo)
-    angulo = 0;  // Restablece el ángulo de la nave
-    puntos = 0;  // Reinicia los puntos del jugador
-    disparos = 0;  // Reinicia la cantidad de disparos
-    enemigos = 0;  // Reinicia la cantidad de enemigos
+     x = 400;  // Coordenada inicial X de la nave (centro del cï¿½rculo)
+    y = 250;  // Coordenada inicial Y de la nave (centro del cï¿½rculo)
+    // Limpiar la nave anterior (si es necesario)
+    nave(limpiar_nave);
 
-    // También puedes detener cualquier movimiento en curso si es necesario
-    pausado = false;  // Asegura que el juego no quede pausado al reiniciar
+    // Restablecer las coordenadas de la nave segÃºn el Ã¡ngulo actual
+    int centroX = VAncho() / 2;
+    int centroY = VAlto() / 2;
+    int radio = -155; // Ajusta el radio segÃºn tu juego
+
+    // Calcular las nuevas coordenadas de la nave
+    x = centroX + (radio * cos(angulo * M_PI / 180));
+    y = centroY + (radio * sin(angulo * M_PI / 180));
+
+    // Actualizar las coordenadas de la nave y dibujarla con los colores correctos
+    nave(set_position);
+    (CL_ROJO, CL_AZUL); // Ajusta los colores segÃºn tus preferencias
+
+    // Restablecer otros parÃ¡metros del juego
+    angulo = -52; // Ajusta el Ã¡ngulo inicial si es necesario
+    puntos = 0;
+    disparos = 0;
+    enemigos = 0;
+    pausado = false;
+
+    // Esperar para mejorar el rendimiento (si es necesario)
+    Espera(500);
+
     Mensaje("El juego ha sido reiniciado");
 }
 
@@ -121,8 +143,6 @@ bool galaxong::esta_pausado() const {
 
 void galaxong::actualizar() {
     if (esta_pausado()) {
-        // Si el juego está pausado, no se actualiza nada
         return;
     }
-
 }

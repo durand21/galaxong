@@ -1,10 +1,16 @@
 #include "graphito.h"
 #include "galaxong.h"
 #include "nave.h"
-
+#include "bicho.h"
 using namespace graphito;
 
 int main() {
+     //---------- Declaracion de Variables
+    std::vector<bicho> bichos;
+     int btn_dibujado = false;
+    int tecla = 0, xMouse = 0, yMouse = 0;
+    int modera_x_bichos = 0, modera_y_bichos = 0;
+     bool clicIzq = false, clicIzquierdoProcesado = false; // Marca si el clic izquierdo ya fue procesado
     // Inicializa la ventana
     VDefine(1000, 560, "Galaxong");
     FormatoBorde(EB_CONTINUO, 0, CL_BLANCO);
@@ -13,17 +19,21 @@ int main() {
     Rectangulo(1000, 0, 770, 650);
     // Iniciliaza el juego y la nave ante de renderizar el menu y los puntajes.
     galaxong gx;
-    // Da tiempo a renderizar
+  // Da tiempo a renderizar
     Espera(500);
-    nave nave(400, 250, 0, CL_AZUL);
+    nave nave(400, 250, 0, CL_ROJO, CL_AZUL);
+    // Crea los bichos
+    for (int i=0; i <4; i++){
+        bichos.push_back(bicho(385+modera_x_bichos,235+ modera_y_bichos,CL_ROJO,CL_CAFE, 10));
+        modera_x_bichos += 40;
+        if (i == 1){
+            modera_x_bichos = 0;
+            modera_y_bichos = 37;
+        }
+        Espera(100);
+    }
 
     FormatoBorde(EB_CONTINUO, 5,CL_BLANCO);
-
-
-    int tecla = 0;
-    int xMouse = 0, yMouse = 0;
-    bool clicIzq = false;
-    bool clicIzquierdoProcesado = false; // Marca si el clic izquierdo ya fue procesado
 
     // Bucle de eventos
     while (true) {
@@ -45,13 +55,13 @@ int main() {
         gx.actualizar(); // Actualiza la lógica del juego
 
         tecla = Tecla();
-         // Mover la nave con teclas
-        if (!gx.esta_pausado()) { // Solo permite mover si el juego no está en pausa
         // Manejo de entrada
         if (tecla == VK_ESCAPE) {
             break; // Salir si se presiona Escape
         }
 
+        // Mover la nave con teclas
+        if (!gx.esta_pausado()) { // Solo permite mover si el juego no está en pausa
         // Mover la nave con teclas
         if (tecla == TC_IZQUIERDA) {
             nave.mover(-5, 0); // Mueve a la izquierda
@@ -69,11 +79,18 @@ int main() {
             nave.mover(0, 5); // Mueve hacia abajo
             LimpiaMemoriaTecla();
         }
-   }
+    }
         // Dibuja los botones, puntuación y actualiza la pantalla
-        gx.dibujar_botones();
+
         gx.dibujar_puntuacion();
 
+
+        if (btn_dibujado == false){ // Dibuja los botones, puntuación y actualiza la pantalla
+            Espera(30);
+            gx.dibujar_botones();
+            btn_dibujado = true;
+            Espera(30);
+        }
         // Refresca la pantalla
         VRefresca();
         Espera(50); // Controla la velocidad del bucle
