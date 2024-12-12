@@ -32,6 +32,7 @@ int main() {
         Espera(100);
     }
     FormatoBorde(EB_CONTINUO, 5,CL_BLANCO);
+    Espera(100);// espera que el juego cargue
     // Bucle de eventos
     while (true) {
 
@@ -57,21 +58,21 @@ int main() {
 
         // Mover la nave con teclas
         if (tecla == TC_IZQUIERDA) {
-            nav.mover(-10, 0); // Mueve a la izquierda
+            nav.mover(-10, 0,5); // Mueve a la izquierda
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_DERECHA) {
-            nav.mover(10, 0); // Mueve a la derecha
+            nav.mover(10, 0,-5); // Mueve a la derecha
             LimpiaMemoriaTecla();
         }
-        if (tecla == TC_ARRIBA) {
+        /*if (tecla == TC_ARRIBA) {
             nav.mover(0, -10); // Mueve hacia arriba
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_ABAJO) {
             nav.mover(0, 10); // Mueve hacia abajo
             LimpiaMemoriaTecla();
-        }
+        }*/
         gx.dibujar_puntuacion();
 
         if (btns_dibujados == false){ // Dibuja los botones, puntuación y actualiza la pantalla

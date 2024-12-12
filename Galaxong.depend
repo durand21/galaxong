@@ -152,7 +152,7 @@
 1733706887 c:\users\romme\onedrive\escritorio\galaxong\galaxong.h
 	"graphito.h"
 
-1733715119 c:\users\romme\onedrive\escritorio\galaxong\nave.h
+1733976204 c:\users\romme\onedrive\escritorio\galaxong\nave.h
 	"graphito.h"
 
 1733358077 source:c:\users\romme\onedrive\escritorio\galaxong\graphito.cpp
@@ -166,15 +166,18 @@
 	<windowsx.h>
 	"graphito.h"
 
-1733805798 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
+1733975541 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
 	"graphito.h"
 	"galaxong.h"
 	"nave.h"
 	"bicho.h"
 
-1733806825 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
+1733975334 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
 	"graphito.h"
 	"nave.h"
+	<vector>
+	<cmath>
+	<utility>
 
 1733457827 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\graphito.cpp
 	<fstream>
