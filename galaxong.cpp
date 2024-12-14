@@ -65,6 +65,7 @@ void galaxong::dibujar_botones() {
     TMostrar(840, 375, 120, 35, botonReiniciar.texto);
     TMostrar(860, 445, 120, 35, botonSalir.texto);
 }
+
 void galaxong::pausar() {
     if (pausado) {
         // Si el juego ya está pausado, pregunta si desea reanudar

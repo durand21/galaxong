@@ -191,29 +191,32 @@
 	<vector>
 	<array>
 
-1733967803 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.cpp
+1734198552 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.cpp
 	"graphito.h"
 	"nave.h"
+	<vector>
+	<utility>
 	"galaxong.h"
 	<cmath>
 
-1734138018 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.h
+1734198616 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.h
 	"graphito.h"
 
-1733967879 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\main.cpp
+1734198526 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\main.cpp
 	"graphito.h"
 	"galaxong.h"
 	"nave.h"
 	"bicho.h"
 
-1734137938 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.h
+1734198597 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.h
 	"graphito.h"
 	<vector>
 
-1733967687 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.cpp
+1734198647 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.cpp
 	"graphito.h"
 	"galaxong.h"
 	"nave.h"
+	"bicho.h"
 	<cmath>
 
 1733876559 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\bicho.cpp

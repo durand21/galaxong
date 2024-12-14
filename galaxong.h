@@ -30,7 +30,7 @@ public:
     // Constructor
      galaxong(int _x = 400, int _y = 250, int _angulo = 0,
              int _x_campo = 400, int _y_campo = 265,
-             int _radio_campo = 200, int _borde_campo_cl = CL_BLANCO);
+             int _radio_campo = 200, int _borde_campo_cl = CL_MORADO);
 
     void nuevo_juego();                               // Reinicia el juego
     void rotar(int deltaAngulo);                      // Método para rotar la nave

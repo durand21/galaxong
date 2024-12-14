@@ -34,7 +34,7 @@ int main() {
     }
 
     FormatoBorde(EB_CONTINUO, 5,CL_BLANCO);
-
+    Espera(100);// espera que el juego cargue
     // Bucle de eventos
     while (true) {
              // Obtener la posición del mouse
@@ -64,21 +64,21 @@ int main() {
         if (!gx.esta_pausado()) { // Solo permite mover si el juego no está en pausa
         // Mover la nave con teclas
         if (tecla == TC_IZQUIERDA) {
-            nave.mover(-5, 0); // Mueve a la izquierda
+            nave.mover(-10, 0,5); // Mueve a la izquierda
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_DERECHA) {
-            nave.mover(5, 0); // Mueve a la derecha
+            nave.mover(-10, 0,-5); // Mueve a la derecha
             LimpiaMemoriaTecla();
         }
-        if (tecla == TC_ARRIBA) {
-            nave.mover(0, -5); // Mueve hacia arriba
+        /*if (tecla == TC_ARRIBA) {
+            nav.mover(0, -10); // Mueve hacia arriba
             LimpiaMemoriaTecla();
         }
         if (tecla == TC_ABAJO) {
-            nave.mover(0, 5); // Mueve hacia abajo
+            nav.mover(0, 10); // Mueve hacia abajo
             LimpiaMemoriaTecla();
-        }
+        }*/
     }
         // Dibuja los botones, puntuación y actualiza la pantalla
 
