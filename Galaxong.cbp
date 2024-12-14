@@ -37,6 +37,8 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 		</Linker>
+		<Unit filename="bicho.cpp" />
+		<Unit filename="bicho.h" />
 		<Unit filename="galaxong.cpp" />
 		<Unit filename="galaxong.h" />
 		<Unit filename="graphito.cpp" />

@@ -76,8 +76,7 @@ void nave::ocultar(){
 }
 
 void nave::mover(int _x, int _y) {
-
-        // Verificar que la nueva posición no se salga del círculo
+    // Verificar que la nueva posición no se salga del círculo
     for (auto& coordenada : coordenadas_alas_nave) {
         int nueva_x = coordenada[0] + _x;
         int nueva_y = coordenada[1] + _y;
@@ -110,60 +109,3 @@ void nave::mover(int _x, int _y) {
     }
     dibujar_nave();
 }
-
-void nave::limpiar_nave() {
-     // Configura el color de fondo para "borrar" la nave
-    FormatoBorde(EB_CONTINUO, 1, CL_NEGRO);
-    FormatoRelleno(ER_SOLIDO, CL_NEGRO);
-
-    // Tamaño del rectángulo para borrar cada punto
-    int tamRect = 3; // Ajusta este valor según el tamaño de los puntos que quieres borrar
-
-    // Borrar las coordenadas de las alas
-    for (const auto& coordenada : coordenadas_alas_nave) {
-        int x = coordenada[0];
-        int y = coordenada[1];
-        Rectangulo(x - tamRect/2, y - tamRect/2, x + tamRect/2, y + tamRect/2);
-    }
-
-    // Borrar las coordenadas del cuerpo
-    for (const auto& coordenada : coordenadas_body_nave) {
-        int x = coordenada[0];
-        int y = coordenada[1];
-        Rectangulo(x - tamRect/2, y - tamRect/2, x + tamRect/2, y + tamRect/2);
-    }
-    ocultar();
-
-    // Refresca la pantalla para aplicar los cambios
-    VRefresca();
-    dibujar_nave();
-}
-
-void nave::actualizar_coordenadas() {
-    // Calculamos los cambios en las coordenadas x e y basados en el ángulo y radio
-    double deltaX = x - (VAncho() / 2); // Cálculo del desplazamiento en x desde el centro
-    double deltaY = y - (VAlto() / 2); // Cálculo del desplazamiento en y desde el centro
-    double anguloRad = angulo * M_PI / 180.0; // Conversión del ángulo a radianes
-
-    // Iteramos sobre cada vértice y actualizamos sus coordenadas
-    for (auto& vertice : coordenadas_alas_nave) {
-        // Calculamos las nuevas coordenadas del vértice
-        double nuevaX = (VAncho() / 2) + (deltaX * cos(anguloRad) - deltaY * sin(anguloRad));
-        double nuevaY = (VAlto() / 2) + (deltaX * sin(anguloRad) + deltaY * cos(anguloRad));
-
-        // Asignamos las nuevas coordenadas al vértice
-        vertice[0] = static_cast<int>(nuevaX);
-        vertice[1] = static_cast<int>(nuevaY);
-    }
-
-    for (auto& vertice : coordenadas_body_nave) {
-        // Realizamos los mismos cálculos para los vértices del cuerpo
-        double nuevaX = (VAncho() / 2) + (deltaX * cos(anguloRad) - deltaY * sin(anguloRad));
-        double nuevaY = (VAlto() / 2) + (deltaX * sin(anguloRad) + deltaY * cos(anguloRad));
-
-        vertice[0] = static_cast<int>(nuevaX);
-        vertice[1] = static_cast<int>(nuevaY);
-    }
-}
-
-

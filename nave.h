@@ -13,11 +13,4 @@ public:
     void dibujar_nave(); // Método para dibujar la nave
     void ocultar();
     void mover(int deltaX, int deltaY); // Método para mover la nave
-    void limpiar_nave();
-    void actualizar_coordenadas();
-    void reiniciar(int nuevoAngulo);
-    void set_posicion(int x, int y) {
-        this->x = x;
-        this->y = y;
-    }
 };

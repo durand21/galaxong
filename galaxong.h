@@ -1,5 +1,5 @@
 #include "graphito.h"
-
+#include <vector>
 using namespace graphito;
 
 class galaxong {
@@ -11,6 +11,7 @@ private:
     int cant_bloques; // Cantidad de bloques a dibujar en el círculo
     int x_campo, y_campo, radio_campo; // coordenadas y radio del campo
     int borde_campo_cl; // color del borde del campo
+    // Otros miembros de la clase...
 
     struct Boton {
         int xIzq, yArr, xDer, yAba; // Coordenadas del botón
@@ -28,7 +29,7 @@ private:
 public:
     // Constructor
      galaxong(int _x = 400, int _y = 250, int _angulo = 0,
-             int _x_campo = 400, int _y_campo = 250,
+             int _x_campo = 400, int _y_campo = 265,
              int _radio_campo = 200, int _borde_campo_cl = CL_BLANCO);
 
     void nuevo_juego();                               // Reinicia el juego
@@ -39,6 +40,6 @@ public:
     void manejar_eventos(int xMouse, int yMouse, bool clicIzq); // Maneja clics en botones
     bool esta_pausado() const;                        // Verifica si el juego está pausado
     void pausar();                                    // Pausa el juego
-    void reiniciar();                                 // Reinicia la nave
-    void actualizar();                                // actualiza los botones
+    void reiniciar_juego();                                 // Reinicia la nave
+    void actualizar();
 };

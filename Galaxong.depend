@@ -197,7 +197,7 @@
 	"galaxong.h"
 	<cmath>
 
-1733967829 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.h
+1734138018 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\nave.h
 	"graphito.h"
 
 1733967879 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\main.cpp
@@ -206,8 +206,9 @@
 	"nave.h"
 	"bicho.h"
 
-1733541752 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.h
+1734137938 c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.h
 	"graphito.h"
+	<vector>
 
 1733967687 source:c:\users\carlos\onedrive\escritorio\universidad ceutec de carlos cruz\ingenieria en inform¡tica\programacion 3\proyecto c++ git hub\galaxong\galaxong.cpp
 	"graphito.h"

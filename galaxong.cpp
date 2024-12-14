@@ -1,8 +1,12 @@
 #include "graphito.h"
 #include "galaxong.h"
 #include "nave.h"
+#include "bicho.h"
 #include <cmath>
+
 using namespace graphito;
+// Crear un objeto global para la nave
+nave mi_nave(400, 430, 0, CL_ROJO, CL_AZUL);
 
 galaxong::galaxong(int _x, int _y, int _angulo, int _x_campo, int _y_campo, int _radio_campo, int _borde_campo_cl)
     : x(_x), y(_y), angulo(_angulo), puntos(0), disparos(0), enemigos(0),
@@ -26,7 +30,6 @@ void galaxong::nuevo_juego() {
     FormatoBorde(EB_CONTINUO, 5, borde_campo_cl);
     FormatoRelleno(ER_NORELLENO);
     Circulo(x_campo, y_campo, radio_campo);
-
 }
 
 
@@ -89,7 +92,7 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
         if (xMouse >= botonReiniciar.xIzq && xMouse <= botonReiniciar.xDer &&
             yMouse >= botonReiniciar.yArr && yMouse <= botonReiniciar.yAba) {
             if (Pregunta("¿Quieres reiniciar el juego?")) {
-                reiniciar();
+                reiniciar_juego();
             }
         }
 
@@ -103,39 +106,10 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
     }
 }
 
-
-void galaxong::reiniciar() {
-     x = 400;  // Coordenada inicial X de la nave (centro del c�rculo)
-    y = 250;  // Coordenada inicial Y de la nave (centro del c�rculo)
-    // Limpiar la nave anterior (si es necesario)
-    nave(limpiar_nave);
-
-    // Restablecer las coordenadas de la nave según el ángulo actual
-    int centroX = VAncho() / 2;
-    int centroY = VAlto() / 2;
-    int radio = -155; // Ajusta el radio según tu juego
-
-    // Calcular las nuevas coordenadas de la nave
-    x = centroX + (radio * cos(angulo * M_PI / 180));
-    y = centroY + (radio * sin(angulo * M_PI / 180));
-
-    // Actualizar las coordenadas de la nave y dibujarla con los colores correctos
-    nave(set_position);
-    (CL_ROJO, CL_AZUL); // Ajusta los colores según tus preferencias
-
-    // Restablecer otros parámetros del juego
-    angulo = -52; // Ajusta el ángulo inicial si es necesario
-    puntos = 0;
-    disparos = 0;
-    enemigos = 0;
-    pausado = false;
-
-    // Esperar para mejorar el rendimiento (si es necesario)
-    Espera(500);
-
-    Mensaje("El juego ha sido reiniciado");
+void galaxong::reiniciar_juego() {
+    main();    // Llama al programa desde cero
+    Mensaje("El juego se ha reiniciado correctamente"); // Mensaje informativo
 }
-
 
 bool galaxong::esta_pausado() const {
     return pausado;
