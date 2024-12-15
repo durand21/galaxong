@@ -22,8 +22,9 @@ int main() {
     nave nav(400, 250, 0, CL_ROJO, CL_AZUL); // Crea la nave
 
     // Crea los bichos
+    int colores[] = {CL_AMARILLO, CL_AZUL, CL_VERDE, CL_ROJO};
     for (int i=0; i <4; i++){
-        bichos.push_back(bicho(385+modera_x_bichos,235+ modera_y_bichos,CL_ROJO,CL_CAFE, 10));
+        bichos.push_back(bicho(385+modera_x_bichos,235+ modera_y_bichos,colores[i],CL_CAFE, 10));
         modera_x_bichos += 40;
         if (i == 1){
             modera_x_bichos = 0;
@@ -40,12 +41,16 @@ int main() {
         Raton(xMouse, yMouse);  // Usamos la función Raton() de graphito para obtener las coordenadas del mouse
         // Detectar si el botón izquierdo está presionado
         clicIzq = RatonBotonIzq();  // Usamos la función RatonBotonIzq() para saber si el botón izquierdo está presionado
-        // Procesar el clic izquierdo solo si no ha sido procesado aún
-        if (clicIzq && !clicIzquierdoProcesado) {
-            gx.manejar_eventos(xMouse, yMouse, clicIzq,nav);
+
+        if (clicIzq && !clicIzquierdoProcesado) { // Procesar el clic izquierdo solo si no ha sido procesado aún
+            gx.manejar_eventos(xMouse, yMouse, clicIzq, nav, bichos); //Maneja todos los eventos
             clicIzquierdoProcesado = true; // Marca el clic como procesado
         } else if (!clicIzq) {
             clicIzquierdoProcesado = false; // Restablece el estado si se suelta el botón
+        }
+        if (bichos.empty()){
+            Mensaje("Feliicidades el Juego Termino. ");
+            VCierra();  // Cierra la ventana
         }
                 // Actualiza el estado del juego
         gx.actualizar(); // Actualiza la lógica del juego

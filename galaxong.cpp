@@ -75,7 +75,7 @@ void galaxong::pausar() {
     }
 }
 
-void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav) {
+void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav, std::vector<bicho>& _bichos ) {
     // Detecta si el mouse está dentro de un botón y si se ha hecho clic
     if (clicIzq) {
         // Pausar
@@ -101,7 +101,7 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav) 
             }
         }
         //Disparo
-        nav.disparar(5);
+        nav.disparar(5, borde_campo_cl, x_campo, y_campo, radio_campo, _bichos, puntos, disparos);
     }
 }
 

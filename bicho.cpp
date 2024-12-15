@@ -42,35 +42,20 @@ void bicho::dibujar_bicho() {
         visible = true;
     }
 }
-/*
-void nave::ocultar(){
+
+void bicho::ocultar(){
     if(visible){
-        int colortmp = color;
-        int color_alastmp = color_alas;
-        color = CL_NEGRO;
-        color_alas = CL_NEGRO;
+        int colortmp_body = color_body;
+        int colortmp_patas = color_patas;
+        color_body = CL_NEGRO;
+        color_patas = CL_NEGRO;
         visible = false;
-        dibujar_nave();
+        dibujar_bicho();
         // Espera a dibujar
             Espera(100);
         visible = false;
-        color = colortmp;
-        color_alas = color_alastmp;
+        color_body = colortmp_body;
+        color_patas = colortmp_patas;
+        x=0, y=0, ancho_bicho=0;
     }
 }
-
-void nave::mover(int _x, int _y) {
-    ocultar();
-    // Iteración para modificar cada coordenada de la ala de la nave
-    for (auto& coordenada : coordenadas_alas_nave) { // Usa referencia para modificar el vector
-        coordenada[0] += _x; // Sumar deltaX a la coordenada x
-        coordenada[1] += _y; // Sumar deltaY a la coordenada y
-    }
-    // Iteración para modificar cada coordenada del cuerpo
-    for (auto& coordenada : coordenadas_body_nave) { // Usa referencia para modificar el vector
-        coordenada[0] += _x; // Sumar deltaX a la coordenada x
-        coordenada[1] += _y; // Sumar deltaY a la coordenada y
-    }
-    dibujar_nave();
-}
-*/

@@ -1,5 +1,6 @@
 #include "graphito.h"
 #include "nave.h"
+#include "galaxong.h"
 #include <vector>
 #include <cmath>
 #include <utility>
@@ -130,14 +131,15 @@ coordenadas_cuerpo = {{-392, -411}, {-395, -409}, {-400, -409}, {-405, -409},
                       {-395, -414}, {-392, -414}};
 
 }
-void dibuja_bala(const int& _color_balas,const int& _ancho_bala, const std::array<int,2>& punta_nave, bool& _bala_visible){
+void dibuja_bala(const int _color_balas,const int& _ancho_bala, const std::array<int,2>& punta_nave, bool& _bala_visible){
     if (!_bala_visible){
         FormatoRelleno(ER_SOLIDO,_color_balas);
+        FormatoBorde(EB_CONTINUO,0,CL_NEGRO);
         Circulo(punta_nave[0],punta_nave[1], _ancho_bala);
         _bala_visible = true;
     }
 }
-void oculta_bala(const int& _color_balas,const int& _ancho_bala, const std::array<int,2>& punta_nave, bool& _bala_visible ){
+void oculta_bala(const int& _ancho_bala, const std::array<int,2>& punta_nave, bool& _bala_visible ){
     if(_bala_visible){
         _bala_visible = false;
         dibuja_bala(CL_NEGRO, _ancho_bala, punta_nave, _bala_visible);
@@ -145,14 +147,14 @@ void oculta_bala(const int& _color_balas,const int& _ancho_bala, const std::arra
     }
 }
 
-void nave::disparar(int paso){
+void nave::disparar(int paso,int _color_borde_circulo, int _x_circulo, int _y_circulo, int _radio_campo, std::vector<bicho>& _bichos,int& _puntos, int& _disparos){
     // paso es cada cuantos pixeles avanza
     punta_nave = coordenadas_body_nave[2];
     float x = punta_nave[0], y = punta_nave[1];
     float dx = x_centroide - x, dy = y_centroide - y;
     float magnitud = 0.00, direccion_x=0.00, direccion_y= 0.00;
-    bool bala_usada = false;
     while (fabs(x - x_centroide) > paso || fabs(y - y_centroide) > paso) {
+        oculta_bala(ancho_balas, punta_nave, bala_visible);
         dx = x_centroide - x;
         dy = y_centroide - y;
         magnitud = sqrt(dx * dx + dy * dy);
@@ -161,7 +163,44 @@ void nave::disparar(int paso){
         // Mover el punto
         punta_nave[0] += direccion_x * paso;
         punta_nave[1] += direccion_y * paso;
+
+        if (punta_nave[0] >= _x_circulo+_radio_campo || punta_nave[0] <= _x_circulo-_radio_campo){ //valida que no se salga en x del circulo
+                oculta_bala(ancho_balas, punta_nave, bala_visible);
+                FormatoBorde(EB_CONTINUO, 5, _color_borde_circulo);
+                FormatoRelleno(ER_NORELLENO);
+                Circulo(_x_circulo, _y_circulo, _radio_campo);
+                Espera(100);
+            return;
+        }
+        if (punta_nave[1] >= _y_circulo+_radio_campo || punta_nave[1] <= _y_circulo-_radio_campo){ //valida que no se salga en y del circulo
+                oculta_bala(ancho_balas, punta_nave, bala_visible);
+                FormatoBorde(EB_CONTINUO, 5, _color_borde_circulo);
+                FormatoRelleno(ER_NORELLENO);
+                Circulo(_x_circulo, _y_circulo, _radio_campo);
+                Espera(100);
+            return;
+        }
         dibuja_bala(color_balas, ancho_balas, punta_nave, bala_visible);
-        oculta_bala(color_balas, ancho_balas, punta_nave, bala_visible);
+        j++;
+        Espera(30);
+        // Validar si le da a un bicho
+        if (_bichos.empty()){
+            Mensaje("Feliicidades el Juego Termino. ");
+            VCierra();  // Cierra la ventana
+        }
+        for (int i=0;i<4;i++){
+            bicho bicho_tmp = _bichos[i];
+            if((punta_nave[0] > _bichos[i].x-_bichos[i].ancho_bicho && punta_nave[0] < _bichos[i].x+_bichos[i].ancho_bicho)
+                && (punta_nave[1] > _bichos[i].y-_bichos[i].ancho_bicho && punta_nave[1] < _bichos[i].y+_bichos[i].ancho_bicho)){
+                oculta_bala(ancho_balas, punta_nave, bala_visible);
+                _bichos[i].ocultar();
+                _bichos.erase(_bichos.begin() + i);
+                _puntos += 10;
+              return;
+            }
+        }
+        Espera(30);
     }
+    _puntos -=3;
+    _disparos++;
 }
