@@ -1,5 +1,5 @@
 #include "graphito.h"
-
+#include "nave.h"
 using namespace graphito;
 
 class galaxong {
@@ -36,7 +36,7 @@ public:
     void actualizar_puntuacion(int puntos_obtenidos); // Actualiza la puntuación
     void dibujar_puntuacion();                        // Dibuja la puntuación en pantalla
     void dibujar_botones();                           // Dibuja los botones
-    void manejar_eventos(int xMouse, int yMouse, bool clicIzq); // Maneja clics en botones
+    void manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav); // Maneja clics en botones
     bool esta_pausado() const;                        // Verifica si el juego está pausado
     void pausar();                                    // Pausa el juego
     void reiniciar();                                 // Reinicia la nave

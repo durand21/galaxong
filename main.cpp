@@ -42,7 +42,7 @@ int main() {
         clicIzq = RatonBotonIzq();  // Usamos la función RatonBotonIzq() para saber si el botón izquierdo está presionado
         // Procesar el clic izquierdo solo si no ha sido procesado aún
         if (clicIzq && !clicIzquierdoProcesado) {
-            gx.manejar_eventos(xMouse, yMouse, clicIzq);
+            gx.manejar_eventos(xMouse, yMouse, clicIzq,nav);
             clicIzquierdoProcesado = true; // Marca el clic como procesado
         } else if (!clicIzq) {
             clicIzquierdoProcesado = false; // Restablece el estado si se suelta el botón
@@ -65,14 +65,7 @@ int main() {
             nav.mover(10, 0,-5); // Mueve a la derecha
             LimpiaMemoriaTecla();
         }
-        /*if (tecla == TC_ARRIBA) {
-            nav.mover(0, -10); // Mueve hacia arriba
-            LimpiaMemoriaTecla();
-        }
-        if (tecla == TC_ABAJO) {
-            nav.mover(0, 10); // Mueve hacia abajo
-            LimpiaMemoriaTecla();
-        }*/
+
         gx.dibujar_puntuacion();
 
         if (btns_dibujados == false){ // Dibuja los botones, puntuación y actualiza la pantalla

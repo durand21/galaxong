@@ -46,8 +46,8 @@ void galaxong::dibujar_puntuacion() {
 }
 
 void galaxong::dibujar_botones() {
-     // Da tiempo a renderizar
-        Espera(90);
+         // Da tiempo a renderizar
+        Espera(20);
     FormatoRelleno(ER_SOLIDO, CL_NEGRO);
     RectanguloRedondeado(botonPausar.xIzq, botonPausar.yArr, botonPausar.xDer, botonPausar.yAba, 10);
     RectanguloRedondeado(botonReiniciar.xIzq, botonReiniciar.yArr, botonReiniciar.xDer, botonReiniciar.yAba, 10);
@@ -57,6 +57,8 @@ void galaxong::dibujar_botones() {
     TMostrar(850, 307, 125, 45, botonPausar.texto);
     TMostrar(840, 375, 120, 35, botonReiniciar.texto);
     TMostrar(860, 445, 120, 35, botonSalir.texto);
+         // Da tiempo a renderizar
+        Espera(90);
 }
 
 void galaxong::pausar() {
@@ -73,20 +75,23 @@ void galaxong::pausar() {
     }
 }
 
-void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
+void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav) {
     // Detecta si el mouse está dentro de un botón y si se ha hecho clic
     if (clicIzq) {
         // Pausar
         if (xMouse >= botonPausar.xIzq && xMouse <= botonPausar.xDer &&
             yMouse >= botonPausar.yArr && yMouse <= botonPausar.yAba) {
             pausar();
+            return;
         }
         // Reiniciar
         if (xMouse >= botonReiniciar.xIzq && xMouse <= botonReiniciar.xDer &&
             yMouse >= botonReiniciar.yArr && yMouse <= botonReiniciar.yAba) {
             if (Pregunta("¿Quieres reiniciar el juego?")) {
                 reiniciar();
+                return;
             }
+            return;
         }
         // Salir
         if (xMouse >= botonSalir.xIzq && xMouse <= botonSalir.xDer &&
@@ -95,6 +100,8 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq) {
                 VCierra();  // Cierra la ventana
             }
         }
+        //Disparo
+        nav.disparar(5);
     }
 }
 
