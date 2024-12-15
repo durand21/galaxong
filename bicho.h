@@ -1,3 +1,4 @@
+#pragma once
 #include "graphito.h"
 using namespace graphito;
 
@@ -8,6 +9,7 @@ private:
     bool visible;
     int ancho_bicho;
     int ancho_ojos;
+    friend class nave;
 public:
     bicho(int  _x = 0,int _y = 0, int _color_body = CL_ROJO, int _color_patas = CL_AMARILLO, int _ancho_bicho=10);
     void dibujar_bicho(); // Método para dibujar la nave

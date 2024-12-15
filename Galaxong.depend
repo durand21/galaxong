@@ -139,7 +139,7 @@
 	"graphito.h"
 	"nave.h"
 
-1733707184 source:c:\users\romme\onedrive\escritorio\galaxong\galaxong.cpp
+1734289691 source:c:\users\romme\onedrive\escritorio\galaxong\galaxong.cpp
 	"graphito.h"
 	"galaxong.h"
 	"nave.h"
@@ -149,11 +149,14 @@
 	<vector>
 	<array>
 
-1733706887 c:\users\romme\onedrive\escritorio\galaxong\galaxong.h
+1734288817 c:\users\romme\onedrive\escritorio\galaxong\galaxong.h
 	"graphito.h"
+	"nave.h"
+	"bicho.h"
 
-1733976204 c:\users\romme\onedrive\escritorio\galaxong\nave.h
+1734289677 c:\users\romme\onedrive\escritorio\galaxong\nave.h
 	"graphito.h"
+	"bicho.h"
 
 1733358077 source:c:\users\romme\onedrive\escritorio\galaxong\graphito.cpp
 	<fstream>
@@ -166,15 +169,16 @@
 	<windowsx.h>
 	"graphito.h"
 
-1733975541 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
+1734288995 source:c:\users\romme\onedrive\escritorio\galaxong\main.cpp
 	"graphito.h"
 	"galaxong.h"
 	"nave.h"
 	"bicho.h"
 
-1733975334 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
+1734289677 source:c:\users\romme\onedrive\escritorio\galaxong\nave.cpp
 	"graphito.h"
 	"nave.h"
+	"galaxong.h"
 	<vector>
 	<cmath>
 	<utility>
@@ -215,10 +219,10 @@
 	"galaxong.h"
 	"nave.h"
 
-1733802686 source:c:\users\romme\onedrive\escritorio\galaxong\bicho.cpp
+1734288638 source:c:\users\romme\onedrive\escritorio\galaxong\bicho.cpp
 	"graphito.h"
 	"bicho.h"
 
-1733799348 c:\users\romme\onedrive\escritorio\galaxong\bicho.h
+1734286705 c:\users\romme\onedrive\escritorio\galaxong\bicho.h
 	"graphito.h"
 
