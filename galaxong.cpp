@@ -18,7 +18,7 @@ void galaxong::nuevo_juego() {
     disparos = 0;
     enemigos = 0;
     pausado = false;
-    Mensaje("Bienvenidos al juego de galaxong");
+    Mensaje("Bienvenidos al juego de Galaxong");
     //Esperar asi mejora rendimiento
     Espera(500);
     // Establece el color del borde del campo
@@ -86,7 +86,7 @@ void galaxong::dibujar_botones() {
 void galaxong::pausar() {
     if (pausado) {
         // Si el juego ya est� pausado, pregunta si desea reanudar
-        if (Pregunta("Quieres reanudar el juego?")) {
+        if (Pregunta("¿Quieres reanudar el juego?")) {
             pausado = false;  // Reanuda el juego
             Mensaje("Juego reanudado");
         }
@@ -145,11 +145,26 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav, 
                 VCierra();  // Cierra la ventana
             }
         }
+    }
+  // Verificar si se alcanzó el límite de disparos
+    if (disparos >= 4) {
+        if (Pregunta("Se te acabaron los intentos. Quieres volver a jugar?")) {
+            reiniciar_juego();
+        } else {
+            VCierra();  // Cierra el juego si no desea continuar
+        }
+        return;  // Detener el manejo de eventos
+    }
 
-        // Disparo (solo se permite si el juego no está pausado)
+    // Manejar disparo solo si no se ha alcanzado el límite
+    if (clicIzq && xMouse >= botonPausar.xIzq && xMouse <= botonPausar.xDer &&
+        yMouse >= botonPausar.yArr && yMouse <= botonPausar.yAba) {
+        pausar();
+    } else if (clicIzq) {
         nav.disparar(5, borde_campo_cl, x_campo, y_campo, radio_campo, _bichos, puntos, disparos, enemigos);
     }
 }
+
 
 void galaxong::reiniciar_juego() {
     main();    // Llama al programa desde cero
