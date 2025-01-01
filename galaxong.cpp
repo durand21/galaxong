@@ -75,7 +75,7 @@ void galaxong::dibujar_botones() {
     RectanguloRedondeado(botonSalir.xIzq, botonSalir.yArr, botonSalir.xDer, botonSalir.yAba, 10);
 
     TFormato("Times New Roman", 27, 0, FT_NEGRITA, CL_BLANCO);
-    TMostrar(850, 307, 125, 45, botonPausar.texto);
+    TMostrar(850, 307, 125, 45, pausado ? "Reanudar" : "Pausar"); // Cambia el texto según el estado
     TMostrar(840, 375, 120, 35, botonReiniciar.texto);
     TMostrar(860, 445, 120, 35, botonSalir.texto);
          // Da tiempo a renderizar
@@ -85,14 +85,17 @@ void galaxong::dibujar_botones() {
 
 void galaxong::pausar() {
     if (pausado) {
-        // Si el juego ya est� pausado, pregunta si desea reanudar
+        // Si el juego está pausado, pregunta si desea reanudar
         if (Pregunta("¿Quieres reanudar el juego?")) {
             pausado = false;  // Reanuda el juego
             Mensaje("Juego reanudado");
         }
     } else {
-        pausado = true;
-        Mensaje("Juego pausado");
+        // Pausa el juego
+        if (Pregunta("¿Quieres pausar el juego?")) {
+            pausado = true;
+            Mensaje("Juego pausado");
+        }
     }
 }
 
@@ -130,6 +133,7 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav, 
         if (xMouse >= botonPausar.xIzq && xMouse <= botonPausar.xDer &&
             yMouse >= botonPausar.yArr && yMouse <= botonPausar.yAba) {
             pausar();
+            return;
         }
         // Reiniciar
         if (xMouse >= botonReiniciar.xIzq && xMouse <= botonReiniciar.xDer &&
@@ -145,7 +149,7 @@ void galaxong::manejar_eventos(int xMouse, int yMouse, bool clicIzq, nave& nav, 
                 VCierra();  // Cierra la ventana
             }
         }
-    }
+    } if (pausado) return;
   // Verificar si se alcanzó el límite de disparos
     if (disparos >= 4) {
         if (Pregunta("Se te acabaron los intentos. Quieres volver a jugar?")) {
